@@ -12,6 +12,8 @@ counts = client.get_recent_tweets_count(query=query, granularity = 'day')
 #needs to be UNDERSTOOD
 users = {u['id']: u for u in response.includes['users']}
 
+
+#returns information on recent tweets
 count = 0
 for tweet in response.data:
     if users[tweet.author_id]:
@@ -28,6 +30,6 @@ for tweet in response.data:
         print(user.username)
         print(user.profile_image_url)
 
-
+#returns count data on recent query search
 for tweet in counts.data:
     print(tweet['tweet_count'])
