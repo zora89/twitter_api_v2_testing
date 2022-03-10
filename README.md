@@ -1,6 +1,6 @@
 Programs to interact with twitter via API V2
 
 
-#-> add query here:
+    #-> add query here:
 
-query = 'covid'
+    query = 'covid'
