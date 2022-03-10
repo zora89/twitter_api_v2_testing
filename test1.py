@@ -3,7 +3,7 @@ import api_token
 
 client = tweepy.Client(bearer_token=api_token.BEARER_TOKEN)
 
-query = 'andaman "and" bjp -is:retweet'
+query = 'paytm "and" india -is:retweet'
 
 response = client.search_recent_tweets(query=query, max_results=10, tweet_fields=['created_at', 'lang'], user_fields=['profile_image_url'], expansions=['author_id'] )
 
