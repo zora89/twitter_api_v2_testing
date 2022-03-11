@@ -3,10 +3,10 @@ import api_token
 
 client = tweepy.Client(bearer_token=api_token.BEARER_TOKEN)
 
-query = '(ukraine victory) -is:retweet lang:en'
+query = 'blockchain future india -is:retweet -#eximbank -btc -eth -nft -crypto -donation -donating -donate lang:en '
 
 #checks for recent tweets
-response = client.search_recent_tweets(query=query, max_results=10, tweet_fields=['created_at', 'lang'], user_fields=['profile_image_url'], expansions=['author_id'] )
+response = client.search_recent_tweets(query=query, max_results=100, tweet_fields=['created_at', 'lang'], user_fields=['profile_image_url'], expansions=['author_id'] )
 #checks for count on of tweets in past week on said query
 counts = client.get_recent_tweets_count(query=query, granularity = 'day')
 #needs to be UNDERSTOOD
@@ -22,13 +22,13 @@ for tweet in response.data:
         print("--")
         print(str(count))
         #print (str(tweet.id))
-        print("------->>>>>>>>")
-        print("BODY: " + tweet.text)
-        print("------->>>>>>>>")
-        print("LANG: " + tweet.lang)
-        print("CREATED AT: " + str(tweet.created_at))
-        print("USERNAME: " + user.username)
-        print(user.profile_image_url)
+        print(">>> USERNAME: " + user.username) 
+        print(">>>>> TWEET: " + tweet.text)
+        #print("LANG: " + tweet.lang)
+        print(">>>>>>>>CREATED AT " + str(tweet.created_at))
+        print("\n")
+        
+        #print(user.profile_image_url)
 print("<<<<<<<<------------ TWEET VOLUME IN PAST 7 DAYS")
 #print(counts.data)
 
