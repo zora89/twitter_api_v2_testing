@@ -3,7 +3,7 @@ import api_token
 
 client = tweepy.Client(bearer_token=api_token.BEARER_TOKEN)
 
-query = 'blockchain future india -is:retweet -#eximbank -btc -eth -nft -crypto -donation -donating -donate lang:en '
+query = 'ayodhya temple  -is:retweet -#eximbank -btc -eth -nft -crypto -donation -donating -donate lang:en '
 
 #checks for recent tweets
 response = client.search_recent_tweets(query=query, max_results=100, tweet_fields=['created_at', 'lang'], user_fields=['profile_image_url'], expansions=['author_id'] )
