@@ -14,7 +14,7 @@ for user in users:
 for tweet in tweets.data:
     print(tweet.id)
     print("------->>>>>>>>")
-    print(tweet.text)
+    #print(tweet.text)
     print("------->>>>>>>>")
     print(tweet.created_at)
 
