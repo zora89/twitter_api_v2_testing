@@ -1,4 +1,3 @@
-from pickle import NONE
 import tweepy
 import api_token
 
