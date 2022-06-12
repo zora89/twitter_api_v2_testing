@@ -6,15 +6,12 @@ client = tweepy.Client(bearer_token=api_token.BEARER_TOKEN)
 query = 'unicorn -is:retweet -#eximbank -btc -eth -nft -crypto -donation -donating -donate lang:en '
 
 #checks for recent tweets
-response = client.search_recent_tweets(query=query, max_results=100, tweet_fields=['created_at', 'lang'], user_fields=['profile_image_url'], expansions=['author_id'] )
+response = client.search_recent_tweets(query=query, 
+            max_results=100, 
+            tweet_fields=['created_at', 'lang'], 
+            user_fields=['profile_image_url'], 
+            expansions=['author_id'])
 
-#response no 2 testing only
-response_2 = tweepy.Paginator(
-        client.search_recent_tweets, query=query, max_results=100, 
-        tweet_fields=['created_at', 'lang'], 
-        user_fields=['profile_image_url'], 
-        expansions=['author_id']).flatten(limit=1000
-        )
 
 #checks for tweet count in 7 days on said query
 counts = client.get_recent_tweets_count(query=query, granularity = 'day')
@@ -28,9 +25,9 @@ word_check_2 = "investor"
 
 #returns information on recent tweets
 count = 0
-count_2 = 0
 word_count_1 = 0
 word_count_2 = 0
+
 
 for tweet in response.data:
     if users[tweet.author_id]:
@@ -48,38 +45,12 @@ for tweet in response.data:
         print(">>> INDEX: " + str(count))
         print (">>> TWEET ID: " + str(tweet.id))
         print(">>> USERNAME: " + user.username) 
-        print(">>>>> TWEET: " + tweet.text)
-        print("LANG: " + tweet.lang)
-        print(">>>>>>>>CREATED AT " + str(tweet.created_at))
-        print(user.profile_image_url)
+        print(">>> TWEET: " + tweet.text)
+        print(">>>LANG: " + tweet.lang)
+        print(">>>CREATED_AT " + str(tweet.created_at))
+        print(">>>PROFILE_IMAGE " + str(user.profile_image_url))
         print('--')
         print('\n')
-
-
-"""
-for tweet in response_2:
-        
-    count_2+=1
-    print(count_2)
-    lowercase_tweet = tweet.text.lower()
-    #enter the word you wish to count occurence of in each tweet !
-    word_1_alert = lowercase_tweet.count(word_check_1.lower())
-    word_2_alert = lowercase_tweet.count(word_check_2.lower())
-    print(f" '--->>>{word_check_1}' repeated {word_1_alert} times")
-    print(f" '--->>>{word_check_2}' repeated {word_2_alert} times")
-    word_count_1 += word_1_alert
-    word_count_2 += word_2_alert
-    print(tweet.text)
-    print("\n")     
-    print("--")
-    print(">>> INDEX: " + str(count))
-    print (">>> TWEET ID: " + str(tweet.id))
-    print(">>> USERNAME: " + user.username) 
-    print(">>>>> TWEET: " + tweet.text)
-    print("LANG: " + tweet.lang)
-    print(">>>>>>>>CREATED AT " + str(tweet.created_at))
-    print(user.profile_image_url)
-"""
 
 print("<<<<<<<<------------ TWEET VOLUME IN PAST 7 DAYS")
 
