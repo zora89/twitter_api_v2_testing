@@ -8,7 +8,7 @@ response = tweepy.Paginator(
         client.search_recent_tweets, query=query, max_results=100, 
         tweet_fields=['created_at', 'lang'], 
         user_fields=['profile_image_url'], 
-        expansions=['author_id']).flatten(limit=10000
+        expansions=['author_id']).flatten(limit=1000
         )
 
 #case sensitive word check
@@ -32,6 +32,7 @@ for tweet in response:
     word_count_1 += word_1_alert
     word_count_2 += word_2_alert
     print(tweet.text)
+    print(tweet.author_id)
     print("\n")
     print("\n")
 
