@@ -3,17 +3,17 @@ import api_token
 
 #setting the client, query and response always first.
 client = tweepy.Client(bearer_token=api_token.BEARER_TOKEN)
-query = 'bjp -is:retweet -#eximbank -btc -eth -nft -crypto -donation -donating -donate lang:en '
+query = 'agnipath -is:retweet -#eximbank -btc -eth -nft -crypto -donation -donating -donate lang:en '
 response = tweepy.Paginator(
         client.search_recent_tweets, query=query, max_results=100, 
         tweet_fields=['created_at', 'lang'], 
         user_fields=['profile_image_url'], 
-        expansions=['author_id']).flatten(limit=1000
+        expansions=['author_id']).flatten(limit=10000
         )
 
 #case sensitive word check
 word_check_1 = "support"
-word_check_2 = "arrest"
+word_check_2 = "against"
 
 #setting counters for ease of data relay
 count = 0
