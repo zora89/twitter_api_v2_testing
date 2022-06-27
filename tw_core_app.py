@@ -8,8 +8,10 @@ response = tweepy.Paginator(
         client.search_recent_tweets, query=query, max_results=100, 
         tweet_fields=['created_at', 'lang'], 
         user_fields=['profile_image_url'], 
-        expansions=['author_id']).flatten(limit=10000
+        expansions=['author_id']).flatten(limit=100
         )
+
+counts = client.get_recent_tweets_count(query=query, granularity = 'day')
 
 #case sensitive word check
 word_check_1 = "support"
@@ -19,8 +21,8 @@ word_check_2 = "against"
 count = 0
 word_count_1 = 0
 word_count_2 = 0
-for tweet in response:
-        
+
+for tweet in response:        
     count+=1
     print(count)
     lowercase_tweet = tweet.text.lower()
@@ -36,4 +38,12 @@ for tweet in response:
     print("\n")
     print("\n")
 
-print(f"'{word_check_1.lower()}' count is {word_count_1} \n'{word_check_2.lower()}' count is {word_count_2}")
+print(f"Tweet Research Query: {query}")
+print("")
+print(f"Total Tweets Scanned {count}")
+print("")
+print(f"Scanner 1 Detected'{word_check_1.lower()}' count is {word_count_1} \nScanner 2 Detected'{word_check_2.lower()}' count is {word_count_2}")
+print("")
+print("<<<<<<<<------------ TWEET VOLUME IN PAST 7 DAYS")
+for tweet in counts.data:
+    print("Tweet Volume", tweet['tweet_count'])
